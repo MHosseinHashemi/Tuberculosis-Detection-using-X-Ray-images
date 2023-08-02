@@ -1,5 +1,5 @@
 keras                        2.9.0
-Keras-Preprocessing          1.1.2
+keras-Preprocessing          1.1.2
 matplotlib                   3.7.1
 matplotlib-inline            0.1.6
 numpy                        1.23.5
