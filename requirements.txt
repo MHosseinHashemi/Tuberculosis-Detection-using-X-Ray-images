@@ -9,4 +9,4 @@ Pillow
 pip
 pandas
 tensorflow
-urllib3<2.0
+tensorflow-gpu
