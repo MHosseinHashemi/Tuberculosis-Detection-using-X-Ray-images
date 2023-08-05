@@ -10,7 +10,7 @@ import numpy as np
 
 
 # Load model
-my_model = load_model("MobileNetV2.h5.h5", compile=False)
+my_model = load_model("MobileNetV2.h5", compile=False)
 
 # UI Design
 st.set_page_config(layout='wide')
