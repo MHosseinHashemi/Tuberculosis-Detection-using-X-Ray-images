@@ -57,6 +57,6 @@ if input_file is None:
 else:
     img = Image.open(input_file)
     with center_col:
-        st.image(img, use_column_width=True, caption="Your uploaded file")
+        # st.image(img, use_column_width=True, caption="Your uploaded file")
         pred = classifier(img, my_model)
-    st.success(pred)
+    st.sidebar.success(pred)
