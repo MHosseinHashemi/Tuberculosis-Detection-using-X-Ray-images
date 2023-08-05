@@ -1,4 +1,3 @@
-from tkinter import font
 from tensorflow.keras.models import load_model
 from tensorflow.keras.optimizers import *
 import tensorflow as tf
