@@ -1,5 +1,5 @@
 ## 1st Project: Tuberculosis Detection using X-Ray images 
-This repository contains an implementation of a Tuberculosis (TB) detection project using TensorFlow. The goal of this project is to build a deep learning model that can automatically detect TB from chest X-ray images.
+Tuberculosis is an infectious disease that primarily affects the lungs and can spread from person to person through the air. A vital diagnostic approach for identifying and analyzing this condition involves the examination of Chest X-rays. The goal of this project is to build a deep learning model based Web Service to aid medical professionals in scrutinizing patients' chest X-rays, facilitating the detection of any pertinent abnormalities related to TB.
 
 ### Table of Contents
 - Introduction
