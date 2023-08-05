@@ -1,4 +1,4 @@
-## 1st Project: Tuberculosis Detection using X-Ray images 
+## Tuberculosis Detection using X-Ray images 
 Tuberculosis is an infectious disease that primarily affects the lungs and can spread from person to person through the air. A vital diagnostic approach for identifying and analyzing this condition involves the examination of Chest X-rays. The goal of this project is to build a deep learning model based Web Service to aid medical professionals in scrutinizing patients' chest X-rays, facilitating the detection of any pertinent abnormalities related to TB.
 
 ### Table of Contents
