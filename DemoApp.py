@@ -1,4 +1,6 @@
+from tkinter import font
 from tensorflow.keras.models import load_model
+from tensorflow.keras.optimizers import *
 import tensorflow as tf
 from tensorflow import keras
 import streamlit as st
@@ -8,13 +10,22 @@ import numpy as np
 
 
 # Load model
-my_model = load_model("EfficientNetV2S.h5")
+my_model = load_model("MobileNetV2.h5.h5", compile=False)
 
 # UI Design
 st.set_page_config(layout='wide')
-st.sidebar.markdown("<div><img src='https://cdn1.poz.com/69152_lungs-ts-147323597.jpg_1dff2524-28f8-4ce0-864e-e1c9c4e71a25.jpeg' width=100 /></div>", unsafe_allow_html=True)
-st.sidebar.title("Tuberculosis (TB) is a disease caused by germs that are spread from person to person through the air. This web service aims to assist the physicians to analyze the patients chest x-ray images for any abnormallies relavant to TB.")
-st.sidebar.markdown('')
+
+st.sidebar.markdown("<p style='text-align: center; font-family: Georgia, sans-serif; font-size: 42px; color: #FF5733; text-shadow: 7px 7px 7px rgba(0.0,0.0,0.0,0.2);'>TB Detector</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<div><img src='https://64.media.tumblr.com/bca36272f65a8dbf0575fc4ed4440b9e/e511f9264f7ec49d-32/s640x960/aa3e63c8f4f3f4abcf149ad8c7bf333bf8def188.gif' width=300 /></div>", unsafe_allow_html=True)
+
+
+input_file = st.sidebar.file_uploader("", type=['jpg','png'])
+
+st.write("<p style='text-align: center; font-size: 30px; font-family: Georgia;'>How Can I help You?</p>", unsafe_allow_html=True)
+st.write("<p style='text-align: center; text-align: justify; font-size: 16px;'> <span style='font-size: 20px'><b>Tuberculosis</b></span> (TB) is an infectious disease that primarily affects the lungs and can spread from person to person through the air. A vital diagnostic approach for identifying and analyzing this condition involves the examination of Chest X-rays. This web service is designed to aid medical professionals in scrutinizing patients' chest X-rays, facilitating the detection of any pertinent abnormalities related to TB.</p><br>", unsafe_allow_html=True)
+st.video("https://www.youtube.com/watch?v=UKV8Zn7x0wM")
+
+
 left_col, center_col, right_col = st.columns(3) 
 
 
@@ -37,21 +48,18 @@ def classifier(image, model):
     prediction = model.predict_on_batch(image)
     # map the predition to labels
     classification = np.where(prediction == np.max(prediction))[1][0]
-    output = "With " + str(int(prediction[0][classification]*100)) + "% Confidence, " + labelizer(classification)
-
+    output = labelizer(classification) + "Confidence: "+ str(int(prediction[0][classification]*100))+"%"
     return output
 
 
    
 
-input_file = st.file_uploader("Upload MRI pic", type=['jpg','png'])
+# input_file = st.file_uploader("", type=['jpg','png'])
 if input_file is None:
-    st.text("Please upload a picture")
+    pass
 else:
     img = Image.open(input_file)
     with center_col:
         st.image(img, use_column_width=True, caption="Your uploaded file")
         pred = classifier(img, my_model)
     st.success(pred)
-    
-
