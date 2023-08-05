@@ -1,12 +1,10 @@
+import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.optimizers import *
-import tensorflow as tf
-from tensorflow import keras
 import streamlit as st
 from PIL import Image
 import cv2
 import numpy as np
-
 
 # Load model
 my_model = load_model("MobileNetV2.h5", compile=False)
