@@ -34,22 +34,33 @@ def labelizer(p):
         return 'The case is Tuberclosis'
 
 
+# def classifier(image, model):
+#     image = np.array(image)
+#     image = cv2.resize(image, (512,512))
+#     image = image.reshape(1,512,512,3)
+#     # predicting the label
+#     prediction = model.predict_on_batch(image)
+#     # map the predition to labels
+#     classification = np.where(prediction == np.max(prediction))[1][0]
+#     output = labelizer(classification) + "Confidence: "+ str(int(prediction[0][classification]*100))+"%"
+#     return output
 
-
-# a function to manipulate the input pic
 def classifier(image, model):
-    image = np.array(image)
-    image = cv2.resize(image, (512,512))
-    image = image.reshape(1,512,512,3)
-    # predicting the label
-    prediction = model.predict_on_batch(image)
-    # map the predition to labels
-    classification = np.where(prediction == np.max(prediction))[1][0]
-    output = labelizer(classification) + "Confidence: "+ str(int(prediction[0][classification]*100))+"%"
+    # Preprocess the image
+    image = image.resize((512, 512))  
+    image = np.array(image) / 255.0   
+
+    # Predicting the label
+    prediction = model.predict_on_batch(np.expand_dims(image, axis=0))
+
+    # Map the prediction to labels
+    classification = np.argmax(prediction, axis=1)[0]
+    confidence = np.max(prediction) * 100
+
+    output = labelizer(classification) + " Confidence: " + str(confidence) + "%"
     return output
 
 
-   
 
 # input_file = st.file_uploader("", type=['jpg','png'])
 if input_file is None:
