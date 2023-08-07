@@ -32,18 +32,7 @@ def labelizer(p):
         return 'The case is Normal'
     elif p==1:
         return 'The case is Tuberclosis'
-
-
-# def classifier(image, model):
-#     image = np.array(image)
-#     image = cv2.resize(image, (512,512))
-#     image = image.reshape(1,512,512,3)
-#     # predicting the label
-#     prediction = model.predict_on_batch(image)
-#     # map the predition to labels
-#     classification = np.where(prediction == np.max(prediction))[1][0]
-#     output = labelizer(classification) + "Confidence: "+ str(int(prediction[0][classification]*100))+"%"
-#     return output
+        
 
 def classifier(image, model):
     # Preprocess the image
