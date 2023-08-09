@@ -43,8 +43,12 @@ def classifier(image, model):
     prediction = model.predict_on_batch(np.expand_dims(image, axis=0))
 
     # Map the prediction to labels
-    classification = np.argmax(prediction, axis=1)[0]
-    confidence = np.max(prediction) * 100
+    if prediction[0][0] >=0.5:
+        classification = 1
+    else:
+        classification = 0
+        
+    confidence = np.max(prediction[0][0]) * 100
 
     output = labelizer(classification) + " Confidence: " + str(confidence) + "%"
     return output
