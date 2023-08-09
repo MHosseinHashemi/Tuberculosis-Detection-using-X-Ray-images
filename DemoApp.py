@@ -45,10 +45,12 @@ def classifier(image, model):
     # Map the prediction to labels
     if prediction[0][0] >=0.5:
         classification = 1
+        confidence = np.max(prediction[0][0]) * 100
     else:
         classification = 0
+        confidence = 1 - np.max(prediction[0][0]) * 100
         
-    confidence = np.max(prediction[0][0]) * 100
+    
 
     output = labelizer(classification) + " Confidence: " + str(confidence) + "%"
     return output
